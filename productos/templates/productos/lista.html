@@ -1,0 +1,40 @@
+{% extends 'productos/base.html' %}
+
+{% block page_title %}Listado de Productos{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for producto in productos %}
+    <div class="col-md-4 col-lg-3 mb-4">
+        <div class="card h-100">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}" style="height: 200px; object-fit: cover;">
+            {% else %}
+                <div class="d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                    <span class="text-muted">Sin imagen</span>
+                </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ producto.categoria.nombre }}</h6>
+                <p class="card-text">
+                    <strong>Embarques:</strong>
+                    {% for embarque in producto.embarques.all %}
+                        <span class="badge bg-secondary">{{ embarque.codigo_rastreo }}</span>
+                    {% empty %}
+                        <small class="text-muted">Sin embarques asociados.</small>
+                    {% endfor %}
+                </p>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group btn-group-sm" role="group">
+                    <a href="{% url 'productos:producto_detalle' producto.pk %}" class="btn btn-outline-secondary">Ver</a>
+                    <a href="{% url 'productos:producto_editar' producto.pk %}" class="btn btn-outline-primary">Editar</a>
+                    <a href="{% url 'productos:producto_eliminar' producto.pk %}" class="btn btn-outline-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

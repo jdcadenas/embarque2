@@ -1,0 +1,87 @@
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+.pytest_cache/
+.pyre/
+.mypy_cache/
+
+# Virtual environments
+venv/
+ENV/
+.env/
+.venv/
+venv/*
+pip-wheel-metadata/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+# If you collect static files to a different dir, add it here
+# static/
+
+# Django migrations - keep them in source control usually, so do not ignore migrations/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# PyInstaller
+#  Usually these are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other info
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / env
+.env
+.env.*
+*.pem
+*.key
+
+# Logs
+*.log
+
+# Misc
+*.bak
+*~
+
+# Windows
+*.lnk
+
+# Media uploads (Django) — ignored by default
+#/media/
+
+# End of file

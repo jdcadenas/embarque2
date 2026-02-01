@@ -1,0 +1,26 @@
+{% extends 'productos/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Detalle del Embarque</h2>
+    </div>
+    <div class="card-body">
+        <h3>{{ object.codigo_rastreo }}</h3>
+        <p><strong>Fecha de Llegada:</strong> {{ object.fecha_llegada }}</p>
+        <hr>
+        <h5>Productos en este embarque</h5>
+        <ul class="list-group">
+        {% for producto in object.productos.all %}
+            <li class="list-group-item">{{ producto.nombre }} (Stock: {{ producto.stock }})</li>
+        {% empty %}
+            <li class="list-group-item">No hay productos asociados a este embarque.</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'productos:embarque_lista' %}" class="btn btn-secondary">Volver a la lista</a>
+        <a href="{% url 'productos:embarque_editar' object.pk %}" class="btn btn-primary">Editar</a>
+    </div>
+</div>
+{% endblock %}
